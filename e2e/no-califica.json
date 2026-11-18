@@ -1,0 +1,57 @@
+[
+ {
+  "goto": "/?fbclid=TEST_e2e&utm_source=facebook&utm_medium=paid&utm_campaign=TEST-e2e&utm_content=anuncio-test"
+ },
+ {
+  "click": "[data-cta=registro]"
+ },
+ {
+  "fill": {
+   "[data-field=nombre]": "Test Bakano",
+   "[data-field=apellido]": "Prueba No Califica",
+   "[data-field=email]": "prueba.nocalifica@bakano-test.com",
+   "[data-field=phone]": "0991114455"
+  }
+ },
+ {
+  "click": "form [type=submit]"
+ },
+ {
+  "wait_url": "**/ver-video"
+ },
+ {
+  "shot": "ver-video"
+ },
+ {
+  "click": "[data-cta=calificar]"
+ },
+ {
+  "click": "label:has(input[value=patio_area_social])"
+ },
+ {
+  "click": "label:has(input[value=otra])"
+ },
+ {
+  "click": "label:has(input[value=de_15k_a_30k])"
+ },
+ {
+  "click": "label:has(input[value=si])"
+ },
+ {
+  "fill": {
+   "[data-field=objetivo]": "El patio es puro cemento y casi no lo usamos, queremos una zona de parrilla con pérgola"
+  }
+ },
+ {
+  "click": "[data-field=consent]"
+ },
+ {
+  "click": "form [type=submit]"
+ },
+ {
+  "wait_url": "**/sin-espacio"
+ },
+ {
+  "shot": "sin-espacio"
+ }
+]

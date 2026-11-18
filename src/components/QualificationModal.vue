@@ -317,7 +317,7 @@ onUnmounted(() => {
     height: 100%;
     background: $primary;
     transform-origin: left;
-    transition: transform 0.3s ease;
+    transition: transform 280ms $ease-out;
   }
 }
 

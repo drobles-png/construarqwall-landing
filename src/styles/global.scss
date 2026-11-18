@@ -88,14 +88,15 @@ img {
   cursor: pointer;
   transition:
     background-color 0.2s ease,
-    transform 0.15s ease;
+    transform 160ms $ease-out;
   touch-action: manipulation;
+  letter-spacing: 0.01em;
 
   &:hover:not(:disabled) {
     background: $primary-hover;
   }
   &:active:not(:disabled) {
-    transform: scale(0.98);
+    transform: scale(0.97);
   }
   &:disabled {
     cursor: not-allowed;
@@ -201,8 +202,8 @@ img {
     right: 12px;
     display: grid;
     place-items: center;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border: 1px solid $line;
     border-radius: 50%;
     background: $surface;
@@ -212,7 +213,12 @@ img {
 
   &__title {
     margin: 8px 0 8px;
-    font-size: clamp(1.5rem, 5vw, 1.9rem);
+    font-family: $font-display;
+    font-size: clamp(1.9rem, 6vw, 2.2rem);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
   }
 
   &__sub {
@@ -222,13 +228,34 @@ img {
   }
 }
 
-.modal-fade-enter-active,
+// Modal: el fondo se funde y el panel sube un poco al abrir (centrado, sin origen de disparador).
+// Salida más rápida que la entrada.
+.modal-fade-enter-active {
+  transition: opacity 260ms $ease-out;
+
+  .modal {
+    transition:
+      transform 260ms $ease-out,
+      opacity 260ms $ease-out;
+  }
+}
 .modal-fade-leave-active {
-  transition: opacity 0.2s ease;
+  transition: opacity 160ms ease;
+
+  .modal {
+    transition:
+      transform 160ms ease,
+      opacity 160ms ease;
+  }
 }
 .modal-fade-enter-from,
 .modal-fade-leave-to {
   opacity: 0;
+
+  .modal {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

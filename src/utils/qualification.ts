@@ -21,40 +21,57 @@ export interface Question {
 
 export const QUESTIONS = [
   {
-    key: 'perfil',
-    title: '[Pregunta 1: ¿Qué te describe mejor?]',
-    noteLabel: 'Perfil',
+    key: 'proyecto',
+    title: '¿Qué quieres remodelar?',
+    noteLabel: 'Proyecto',
     options: [
-      { value: 'perfil_a', label: '[Perfil ideal A]' },
-      { value: 'perfil_b', label: '[Perfil ideal B]' },
-      { value: 'solo_info', label: '[Solo quiero informarme por ahora]' },
+      { value: 'patio_area_social', label: 'Patio o área social' },
+      { value: 'piscina', label: 'Piscina' },
+      { value: 'cocina', label: 'Cocina' },
+      { value: 'fachada', label: 'Fachada' },
+      { value: 'varios', label: 'Varios espacios de la casa' },
+      { value: 'arreglo', label: 'Un arreglo puntual (pintura, una reparación)' },
     ],
   },
   {
-    key: 'situacion',
-    title: '[Pregunta 2: ¿En qué punto estás hoy?]',
-    noteLabel: 'Situación',
+    key: 'zona',
+    title: '¿Dónde está tu casa?',
+    noteLabel: 'Zona',
     options: [
-      { value: 'empezando', label: '[Estoy empezando]' },
-      { value: 'en_marcha', label: '[Ya lo hago y quiero crecer]' },
+      { value: 'samborondon', label: 'Samborondón, Ciudad Celeste o Mocolí' },
+      { value: 'daule', label: 'Villa Club, La Joya o Villas del Rey' },
+      { value: 'via_costa', label: 'Vía a la Costa o Puerto Azul' },
+      { value: 'otra', label: 'En otra zona' },
     ],
   },
   {
-    key: 'inversion',
-    title: '[Pregunta 3: ¿Cómo piensas invertir?]',
-    noteLabel: 'Inversión',
+    key: 'presupuesto',
+    title: '¿Cuánto piensas invertir en la remodelación?',
+    noteLabel: 'Presupuesto',
     options: [
-      { value: 'tengo_capital', label: '[Tengo el capital para invertir]' },
-      { value: 'financiamiento', label: '[Con financiamiento o un socio]' },
-      { value: 'sin_presupuesto', label: '[Por ahora no tengo cómo invertir]' },
+      { value: 'menos_15k', label: 'Menos de $15.000' },
+      { value: 'de_15k_a_30k', label: 'Entre $15.000 y $30.000' },
+      { value: 'de_30k_a_60k', label: 'Entre $30.000 y $60.000' },
+      { value: 'mas_60k', label: 'Más de $60.000' },
+      { value: 'no_se', label: 'Todavía no lo tengo claro' },
+    ],
+  },
+  {
+    key: 'visita',
+    title: 'Empezamos con una visita técnica a tu casa, que cuesta $30. ¿Te parece bien?',
+    noteLabel: 'Visita $30',
+    options: [
+      { value: 'si', label: 'Sí, quiero agendarla' },
+      { value: 'no', label: 'Por ahora no' },
     ],
   },
 ] as const satisfies readonly Question[]
 
 /** Último paso: pregunta abierta (va a GHL como `objetivo`). */
 export const OBJETIVO = {
-  title: '[Pregunta abierta: ¿Qué quieres lograr?]',
-  placeholder: '[Ejemplo de respuesta que oriente al lead]',
+  title: '¿Qué espacio quieres cambiar y qué es lo que más te molesta hoy?',
+  placeholder:
+    'Ej.: El patio es puro cemento y casi no lo usamos. Queremos una zona de parrilla para reunir a la familia los fines de semana.',
   minWords: 10,
 }
 
@@ -70,12 +87,13 @@ export function labelFor(key: QuestionKey, value: string): string {
 }
 
 // ── Regla de cualificación ────────────────────────────────────────────────────
-// Por defecto se descarta solo a quien viene "a informarse" o no tiene cómo invertir.
-// El resto de respuestas no descalifica: sirven para preparar la reunión.
-// Ajustar con el cliente (quién SÍ es cliente) y documentarlo en el CLAUDE.md del proyecto.
+// Del VSL: "siempre hablamos de una remodelación de verdad, no de un arreglo suelto", "trabajamos en
+// una zona definida" y la visita técnica de $30 como primer paso. El presupuesto NO descalifica
+// ("puede haber trabajos más pequeños"): sirve para preparar la visita.
 const DISQUALIFY: Partial<Record<QuestionKey, readonly string[]>> = {
-  perfil: ['solo_info'],
-  inversion: ['sin_presupuesto'],
+  proyecto: ['arreglo'],
+  zona: ['otra'],
+  visita: ['no'],
 }
 
 export function qualifies(a: Answers): boolean {

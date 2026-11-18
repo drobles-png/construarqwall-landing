@@ -1,8 +1,51 @@
-# landings-vsl — plantilla neutra de funnel VSL (Bakano)
+# construarqwall-landing — funnel VSL de Construarqwall (Bakano)
 
-Plantilla de la skill `landings-vsl` (`~/.claude/skills/landings-vsl`). **No es un cliente**: no agregar contenido, pixel,
-webhooks ni calendarios reales aquí. Para un cliente se clona en un repo nuevo (ver README).
-Cuando la uses para un cliente, reescribe este archivo con: cliente, flujo, config, envíos y pendientes.
+Creado desde la plantilla `drobles-png/landings-vsl` con la skill `landings-vsl`.
+
+## Cliente
+- **Construarqwall** (marca visible: The Wall Estudio Arquitectónico, IG @thewall.arquitectura).
+  Habla en el VSL: **Dayanara**, arquitecta. Remodelaciones de casas (áreas sociales, patios,
+  piscinas, cocinas, fachadas) en Samborondón, Ciudad Celeste, Villa Club, La Joya, Villas del Rey,
+  Mocolí, Puerto Azul y Vía a la Costa.
+- Ficha en Metrics: activo, servicio completo. **Sin estrategia ni identidad de marca cargadas.**
+
+## Flujo
+Agenda (sin pago): `/` → registro → `/ver-video` → cualificación → `/agendar` (calendario GHL
+`CiMZXiIACMrNMkoz1eya`, visita técnica de $30) → `/cita-confirmada`. No califica → `/sin-espacio`.
+
+## Config usada (`src/config/funnel.ts`)
+- Pixel `1817846173673919` · CAPI: token en `.env.local` y en Vercel (`META_CAPI_TOKEN`).
+- Webhooks GHL: contacto `…/6s4CegXvb9aslO5J4JwS`, cualificación `…/jWP7sXeSWQqKNvRW0J72`.
+- `SITE_URL` = `https://thewall-lng.vercel.app` · `STORAGE_PREFIX` `cqw` · `FUNNEL_TAG` `funnel-construarqwall`.
+- WhatsApp `593993495392` · correo legal `thewall.arquitectura@gmail.com`.
+
+## Cualificación (`src/utils/qualification.ts`)
+Preguntas: proyecto, zona, presupuesto, visita de $30 + abierta (`objetivo`).
+`DISQUALIFY`: `proyecto=arreglo` ("no un arreglo suelto"), `zona=otra` ("zona definida"),
+`visita=no`. El presupuesto **no** descalifica ("puede haber trabajos más pequeños"); se usa para
+preparar la visita (confirmado por David, 18 nov 2026: `menos_15k` no descalifica).
+
+## Diseño
+Estructura corta (4 secciones): hero (titular + portada del video) → banda oscura (el orden:
+diseñamos → presupuestamos → construimos, + obras) → 4 pasos con cajetín de "Cómo empezamos" →
+Dayanara (frase, presentación, zonas, para quién es). Recursos propios: la W de líneas finas del
+logo (logo SVG redibujado, W grande que se dibuja en la banda), arcos del fondo del logo en el hero,
+cajetín de presupuesto. Barlow Condensed + Barlow. Colores del logo: greige `#a69c94`, piedra `#2b2623`.
+
+## Pendientes
+- **Media ID de Wistia** del VSL (`WISTIA_MEDIA_ID` vacío: `/ver-video` sin video).
+- **Foto de Dayanara** (portada del video y sección de presentación). Hoy: render de fachada
+  (`public/portada-fachada.webp`) y de área social (`public/area-social.webp`).
+- Fotos de obras: renders del IG del cliente (`public/obra-*.webp`, 3:2). Originales en
+  `~/Downloads/thewall.arquitectura/`.
+- GHL: muestras enviadas a los 2 webhooks (18 nov 2026, workflows en Borrador). Falta mapear,
+  publicar y repetir la prueba `--mode ghl` con emails nuevos. Pruebas: `e2e/agenda.json` (califica)
+  y `e2e/no-califica.json` (zona = otra).
+- Publicar en Vercel: el usuario pidió esperar.
+- Logo en vector/PNG en alta (el SVG actual está redibujado a mano).
+- Apellido de Dayanara y si la marca visible es "The Wall" o "Construarqwall".
+- Datos legales: razón social y RUC (`LEGAL`).
+- Estrategia e identidad de marca en Metrics (`ficha_tecnica` vacía).
 
 ## Stack
 Vue 3 + Vite 7 + TypeScript · SCSS · Pinia · vue-router · pnpm · libphonenumber-js ·

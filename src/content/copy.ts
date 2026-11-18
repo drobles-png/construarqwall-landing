@@ -21,12 +21,16 @@ export interface TeamMember {
 
 export const SEO = {
   landing: {
-    title: `${BRAND_NAME} | [Promesa principal del VSL]`,
-    description: '[Descripción de 150 caracteres con la promesa y para quién es]',
+    title: `${BRAND_NAME} | Remodelaciones en Samborondón y Vía a la Costa`,
+    description:
+      'Diseñamos y construimos remodelaciones de casas: patios, piscinas, cocinas y fachadas. Ves el render y el presupuesto antes de romper nada.',
   },
-  video: { title: `Mira el video | ${BRAND_NAME}`, description: '[Descripción del video]' },
-  booking: { title: `Agenda tu reunión | ${BRAND_NAME}`, description: 'Elige el día y la hora.' },
-  booked: { title: `Reunión confirmada | ${BRAND_NAME}`, description: 'Tu reunión está confirmada.' },
+  video: {
+    title: `Mira el video | ${BRAND_NAME}`,
+    description: 'Cómo diseñamos, presupuestamos y construimos tu remodelación con una arquitecta responsable de principio a fin.',
+  },
+  booking: { title: `Agenda tu visita técnica | ${BRAND_NAME}`, description: 'Elige el día y la hora de tu visita técnica.' },
+  booked: { title: `Visita confirmada | ${BRAND_NAME}`, description: 'Tu visita técnica está confirmada.' },
   noSpace: { title: `Todavía no es el momento | ${BRAND_NAME}`, description: 'Gracias por tu interés.' },
   pago: { title: `Confirma tu lugar | ${BRAND_NAME}`, description: 'Completa tu inscripción.' },
   confirmada: { title: `Inscripción confirmada | ${BRAND_NAME}`, description: 'Tu lugar está confirmado.' },
@@ -35,82 +39,82 @@ export const SEO = {
 }
 
 // ── Landing (/) ───────────────────────────────────────────────────────────────
+// Estructura corta: hero → banda (el orden) + obras → los 4 pasos → Dayanara.
+// Todas las frases salen del VSL.
 export const LANDING = {
-  topbarTag: '[Categoría o propuesta en 4 palabras]',
   // Temporizador del encabezado (components/CountdownTimer.vue). short = versión de celular.
-  timer: { label: 'Agenda de asesorías', short: 'Agenda', prefix: 'Cierra en' },
-  audience: ['[Para quién es 1]', '[Para quién es 2]', '[Para quién es 3]'],
-  headline: '[Promesa principal del VSL]',
-  headlineAccent: '[parte destacada de la promesa]',
-  sub: `[Subtítulo: el dolor en una frase]. ${PERSON_NAME} te lo cuenta en un video corto.`,
-  videoCaption: `${PERSON_NAME} · [Duración del video]`,
+  timer: { label: 'Agenda de visitas técnicas', short: 'Agenda', prefix: 'Cierra en' },
+  headline: 'Antes de romper una sola pared,',
+  headlineAccent: 'diseñamos tu proyecto y te decimos cuánto cuesta.',
+  sub: 'Remodelaciones de casas en Samborondón y Vía a la Costa: áreas sociales, patios, piscinas, cocinas y fachadas. Con una arquitecta que responde por tu obra de principio a fin.',
+  videoLabel: 'Mira el video',
+  videoCaption: `${PERSON_NAME} · Arquitecta de ${BRAND_NAME}`,
   cta: 'Ver el video completo',
   ctaNote: 'Sin costo · Solo te pedimos tus datos para mostrártelo',
 
-  pains: {
-    eyebrow: 'El problema',
-    title: '[Titular del dolor]',
-    items: [
-      { icon: 'fa-circle-exclamation', title: '[Dolor 1]', text: '[Explicación del dolor 1, en la voz del VSL]' },
-      { icon: 'fa-circle-exclamation', title: '[Dolor 2]', text: '[Explicación del dolor 2]' },
-    ],
-  },
+  // Banda: el orden en el que trabajamos
+  order: ['Primero diseñamos', 'después presupuestamos', 'recién ahí construimos'],
+  // Obras reales (renders del Instagram del cliente). Todas recortadas a 3:2.
+  works: [
+    { photo: '/obra-cocina.webp', label: 'Cocinas', w: 1200, h: 799 },
+    { photo: '/obra-pergola.webp', label: 'Áreas sociales', w: 709, h: 473 },
+    { photo: '/obra-piscina.webp', label: 'Piscinas', w: 774, h: 516 },
+    { photo: '/obra-patio.webp', label: 'Patios', w: 822, h: 548 },
+  ],
 
   steps: {
-    eyebrow: 'Cómo funciona',
-    title: '[Titular de la solución en N pasos]',
+    title: 'Cuatro pasos, en orden, sin saltarse ninguno.',
     items: [
-      { title: '[Paso 1]', text: '[Qué se resuelve en el paso 1]' },
-      { title: '[Paso 2]', text: '[Qué se resuelve en el paso 2]' },
-      { title: '[Paso 3]', text: '[Qué se resuelve en el paso 3]' },
+      { title: 'Visita técnica', text: 'Voy a tu casa, veo tu espacio y te digo qué se puede hacer.' },
+      { title: 'Diseño', text: 'Render y presupuesto de obra antes de romper nada.' },
+      { title: 'Obra', text: 'Escogemos juntos los materiales y estoy en tu obra.' },
+      { title: 'Entrega', text: 'Tu espacio como lo viste en el render, listo para usar.' },
     ],
-    cta: 'Quiero ver cómo',
   },
 
-  // Testimonios REALES del cliente (del VSL, de Google o de capturas que mande). Vacío = la sección
-  // no se muestra. photo: URL de Cloudinary o '' (muestra las iniciales).
-  // Formato: { name: 'Ana Pérez', role: 'Dueña de X · Quito', quote: '…', result: '+30% en ventas', photo: '' }
-  testimonials: {
-    eyebrow: 'Resultados',
-    title: '[Lo que dicen quienes ya lo hicieron]',
-    items: [] as Testimonial[],
+  // Lo que se invierte para empezar (cajetín de presupuesto)
+  budget: {
+    title: 'Cómo empezamos',
+    rows: [
+      { label: 'Visita técnica', value: '$30' },
+      { label: 'Diseño: render + presupuesto', value: '$300 a $500' },
+      { label: 'Listo en', value: '15 a 20 días' },
+    ],
+    note: 'Si al ver el presupuesto decides no construir, no pagas el saldo del diseño.',
   },
 
-  // Quién está detrás (genera confianza antes de agendar). Vacío = la sección no se muestra.
-  // Formato: { name: 'Juan Pérez', role: 'CEO y fundador', bio: '…', photo: '' }
-  team: {
-    eyebrow: 'Quién te acompaña',
-    title: '[El equipo detrás de la reunión]',
-    items: [] as TeamMember[],
+  quote: 'Una remodelación que sale mal casi nunca sale mal en la obra. Sale mal antes.',
+
+  about: {
+    title: `Soy ${PERSON_NAME}. Diseño tu proyecto y estoy en tu obra hasta el último día.`,
+    text: 'Somos una empresa pequeña a propósito: así voy a tu obra de verdad, no de vez en cuando.',
+    photo: '/area-social.webp',
   },
 
   fit: {
-    eyebrow: 'Antes de seguir',
     title: '¿Es para ti?',
-    items: [
-      { yes: true, text: '[Sí es para ti si…]' },
-      { yes: true, text: '[Sí es para ti si…]' },
-      { yes: false, text: '[No es para ti si…]' },
-    ],
+    yesTitle: 'Sí, si quieres',
+    yes: ['Ver cómo va a quedar antes de romper nada', 'Saber cuánto cuesta antes de empezar', 'Una arquitecta que responda por tu obra'],
+    noTitle: 'No, si buscas',
+    no: ['Solo el precio más bajo', 'Un diseño para que lo construya otra persona', 'Un arreglo suelto, no una remodelación'],
+    minimum: 'Proyectos desde $15.000',
+    zones: 'Samborondón · Ciudad Celeste · Villa Club · La Joya · Villas del Rey · Mocolí · Puerto Azul · Vía a la Costa',
   },
 
-  closing: {
-    eyebrow: 'Siguiente paso',
-    title: '[Llamado final: mira el video y agendemos]',
-    sub: '[Qué pasa en la reunión y por qué vale la pena]',
-    cta: 'Ver el video completo',
-  },
-
-  sticky: { title: '[Nombre corto de la oferta]', sub: `Video de ${PERSON_NAME}`, cta: 'Ver video' },
+  sticky: { title: 'Remodela con diseño y presupuesto', sub: `Video de ${PERSON_NAME}`, cta: 'Ver video' },
   disclaimer:
     'Los resultados dependen de cada caso. Este sitio no está respaldado por Meta Platforms, Inc. ni forma parte de Facebook.',
+
+  // Opcionales (vacíos = no aparecen). Solo reales.
+  testimonials: { eyebrow: '', title: '', items: [] as Testimonial[] },
+  team: { eyebrow: '', title: '', items: [] as TeamMember[] },
 }
 
 // ── Modal de registro ─────────────────────────────────────────────────────────
 export const REGISTRO = {
-  eyebrow: '[Nombre corto de la oferta]',
+  eyebrow: `Video de ${PERSON_NAME}`,
   title: 'Mira el video completo',
-  sub: '[Por qué dejar tus datos: qué vas a ver y qué pasa después]',
+  sub: `${PERSON_NAME} te cuenta cómo trabajamos paso a paso y cómo puedes agendar tu visita técnica.`,
   submit: 'Ver el video completo',
   submitPago: 'Continuar',
   legal: 'Tus datos están seguros · No spam',
@@ -120,17 +124,17 @@ export const REGISTRO = {
 export const VIDEO = {
   step: 'Paso 1 de 2',
   eyebrow: `${PERSON_NAME} · ${BRAND_NAME}`,
-  title: '[Titular del VSL completo]',
-  sub: 'Mira el video completo. Al final puedes agendar una reunión.',
+  title: 'Antes de romper una sola pared, diseñamos tu proyecto y te decimos cuánto cuesta',
+  sub: 'Mira el video completo. Al final puedes agendar tu visita técnica.',
   lockText: 'El botón se habilita en',
-  cta: 'Agendar mi reunión',
-  trust: 'Reunión sin costo · Cupos sujetos a cualificación',
+  cta: 'Agendar mi visita técnica',
+  trust: 'Visita técnica: $30 · Samborondón y Vía a la Costa',
 }
 
 // ── Cualificación (las preguntas están en utils/qualification.ts) ─────────────
 export const CUALIFICACION = {
   eyebrow: 'Último paso',
-  title: 'Cuéntanos de tu caso',
+  title: 'Cuéntanos de tu proyecto',
   sub: 'Una pregunta a la vez. Te toma un minuto.',
   consent: `Acepto que ${BRAND_NAME} me contacte por WhatsApp y correo, y acepto su`,
   submit: 'Ver horarios disponibles',
@@ -139,30 +143,34 @@ export const CUALIFICACION = {
 // ── /agendar ──────────────────────────────────────────────────────────────────
 export const BOOKING = {
   step: 'Paso 2 de 2',
-  title: 'Elige tu horario',
-  sub: '[Qué se conversa en la reunión]. Sin costo.',
+  title: 'Elige el día de tu visita técnica',
+  sub: `${PERSON_NAME} va a tu casa, conoce tu espacio, escucha lo que quieres hacer y te da su opinión técnica. La visita cuesta $30.`,
   pending:
-    'Estamos terminando de configurar el calendario. Te escribiremos por WhatsApp para coordinar tu reunión.',
+    'Estamos terminando de configurar el calendario. Te escribiremos por WhatsApp para coordinar tu visita.',
 }
 
 // ── /cita-confirmada ──────────────────────────────────────────────────────────
 export const BOOKED = {
-  title: 'Tu reunión está confirmada',
+  title: 'Tu visita técnica está agendada',
   sub: 'Te enviamos los detalles a tu correo.',
   steps: [
-    { icon: 'fa-solid fa-envelope', title: 'Revisa tu correo', text: 'Ahí tienes la fecha, la hora y el enlace.' },
-    { icon: 'fa-brands fa-whatsapp', title: 'Te escribimos por WhatsApp', text: 'Para confirmar y resolver dudas antes.' },
-    { icon: 'fa-solid fa-list-check', title: '[Qué preparar]', text: '[Qué tener a mano para la reunión]' },
+    { icon: 'fa-solid fa-envelope', title: 'Revisa tu correo', text: 'Ahí tienes la fecha y la hora de la visita.' },
+    { icon: 'fa-brands fa-whatsapp', title: 'Te escribimos por WhatsApp', text: 'Para confirmar la dirección y resolver dudas antes.' },
+    {
+      icon: 'fa-solid fa-list-check',
+      title: 'Piensa en tu presupuesto',
+      text: 'En la visita te vamos a pedir que seas sincero con el presupuesto que tienes en mente, para proponerte lo mejor que se puede hacer con esa inversión.',
+    },
   ],
 }
 
 // ── /sin-espacio ──────────────────────────────────────────────────────────────
 export const NO_SPACE = {
   title: 'Todavía no es el momento, y está bien',
-  text: '[Por qué hoy no hay reunión para su caso, con respeto]. Cuando estés listo, aquí estamos.',
+  text: 'Por ahora trabajamos remodelaciones de casas en Samborondón y Vía a la Costa, con una visita técnica de $30 para empezar. Cuando sea tu momento, aquí estamos.',
   cooldown: 'Ya enviaste una solicitud. Podrás intentarlo de nuevo en',
-  resourcesTitle: `Sigue aprendiendo con ${BRAND_NAME}`,
-  resourcesText: '[Qué publica la marca en redes]',
+  resourcesTitle: `Mira nuestras obras`,
+  resourcesText: 'En Instagram publicamos los diseños, las obras y las piscinas que vamos entregando.',
 }
 
 // ── Pago (opcional) ───────────────────────────────────────────────────────────
