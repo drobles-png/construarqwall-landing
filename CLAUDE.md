@@ -32,16 +32,22 @@ Dayanara (frase, presentación, zonas, para quién es). Recursos propios: la W d
 logo (logo SVG redibujado, W grande que se dibuja en la banda), arcos del fondo del logo en el hero,
 cajetín de presupuesto. Barlow Condensed + Barlow. Colores del logo: greige `#a69c94`, piedra `#2b2623`.
 
+## Publicación (18 nov 2026)
+- Producción: **https://thewall-lng.vercel.app** · Vercel `bakano-proyects/construarqwall-landing`,
+  conectado al repo (cada push a main publica). Env: `META_PIXEL_ID`, `META_CAPI_TOKEN`.
+- Meta en **modo landing** (CAPI desde `/api/capi`). Probado con `TEST98855` y ya quitado.
+- GHL probado de punta a punta (MCP): 1 contacto, notas, tags, FB clid, oportunidad en
+  "Agendó llamada" / "No califica". Contactos de prueba borrados.
+- Pruebas: `e2e/agenda.json` (califica) y `e2e/no-califica.json` (zona = otra).
+
 ## Pendientes
 - **Media ID de Wistia** del VSL (`WISTIA_MEDIA_ID` vacío: `/ver-video` sin video).
 - **Foto de Dayanara** (portada del video y sección de presentación). Hoy: render de fachada
   (`public/portada-fachada.webp`) y de área social (`public/area-social.webp`).
 - Fotos de obras: renders del IG del cliente (`public/obra-*.webp`, 3:2). Originales en
   `~/Downloads/thewall.arquitectura/`.
-- GHL: muestras enviadas a los 2 webhooks (18 nov 2026, workflows en Borrador). Falta mapear,
-  publicar y repetir la prueba `--mode ghl` con emails nuevos. Pruebas: `e2e/agenda.json` (califica)
-  y `e2e/no-califica.json` (zona = otra).
-- Publicar en Vercel: el usuario pidió esperar.
+- Revisar que los workflows de GHL no tengan la acción "API de conversión de Meta" en registro,
+  cualificación o cita (el servidor es `/api/capi` de la landing).
 - Logo en vector/PNG en alta (el SVG actual está redibujado a mano).
 - Apellido de Dayanara y si la marca visible es "The Wall" o "Construarqwall".
 - Datos legales: razón social y RUC (`LEGAL`).
