@@ -16,7 +16,7 @@ export const BRAND_NAME = CLIENT.name || '[Marca]'
 export const PERSON_NAME = CLIENT.person || '[Nombre de quien habla]'
 
 // Dominio público (canonical, og:url). Vacío = window.location.origin
-export const SITE_URL = 'https://thewall-lng.vercel.app'
+export const SITE_URL = 'https://construarqwall-lng.vercel.app'
 
 // ── Meta ──────────────────────────────────────────────────────────────────────
 // vite.config.ts inyecta el snippet del pixel en index.html con este id (vacío = sin pixel).
@@ -39,7 +39,7 @@ export const GHL_BOOKING_FRAME_ID = 'CiMZXiIACMrNMkoz1eya_1795017736734'
 export const VSL_POSTER = ''
 export const VSL_POSTER_FALLBACK = '/portada-fachada.webp' // ej. '/vsl-poster.webp'
 // Logo como URL absoluta (para el JSON-LD de la empresa). Vacío = el JSON-LD va sin logo.
-export const LOGO_URL = 'https://thewall-lng.vercel.app/logo.svg'
+export const LOGO_URL = 'https://construarqwall-lng.vercel.app/logo.svg'
 
 // ── Video ─────────────────────────────────────────────────────────────────────
 export const WISTIA_MEDIA_ID = ''

@@ -16,7 +16,7 @@ Agenda (sin pago): `/` → registro → `/ver-video` → cualificación → `/ag
 ## Config usada (`src/config/funnel.ts`)
 - Pixel `1817846173673919` · CAPI: token en `.env.local` y en Vercel (`META_CAPI_TOKEN`).
 - Webhooks GHL: contacto `…/6s4CegXvb9aslO5J4JwS`, cualificación `…/jWP7sXeSWQqKNvRW0J72`.
-- `SITE_URL` = `https://thewall-lng.vercel.app` · `STORAGE_PREFIX` `cqw` · `FUNNEL_TAG` `funnel-construarqwall`.
+- `SITE_URL` = `https://construarqwall-lng.vercel.app` · `STORAGE_PREFIX` `cqw` · `FUNNEL_TAG` `funnel-construarqwall`.
 - WhatsApp `593993495392` · correo legal `thewall.arquitectura@gmail.com`.
 
 ## Cualificación (`src/utils/qualification.ts`)
@@ -33,7 +33,7 @@ logo (logo SVG redibujado, W grande que se dibuja en la banda), arcos del fondo 
 cajetín de presupuesto. Barlow Condensed + Barlow. Colores del logo: greige `#a69c94`, piedra `#2b2623`.
 
 ## Publicación (18 nov 2026)
-- Producción: **https://thewall-lng.vercel.app** · Vercel `bakano-proyects/construarqwall-landing`,
+- Producción: **https://construarqwall-lng.vercel.app** · Vercel `bakano-proyects/construarqwall-landing`,
   conectado al repo (cada push a main publica). Env: `META_PIXEL_ID`, `META_CAPI_TOKEN`.
 - Meta en **modo landing** (CAPI desde `/api/capi`). Probado con `TEST98855` y ya quitado.
 - GHL probado de punta a punta (MCP): 1 contacto, notas, tags, FB clid, oportunidad en
